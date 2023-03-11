@@ -48,17 +48,23 @@ main {
     gap: 0.8rem;
     height: 60vh;
     width: 28vw;
-} 
-
-.calcButton {
-    appearance: none;
-    margin: 0;
-    padding: 0;
-    border: 1px solid black;
 }
 
 #calcDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 1.6rem;
+    border: 0.1rem solid black;
     grid-column: span 4;
+}
+
+#topDigit {
+    padding: 0.8rem 1rem 1.5rem 0;
+}
+
+#bottomDigit {
+    padding: 1.5rem 1rem 0.8rem 0
 }
 
 #calcClear {

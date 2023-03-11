@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
@@ -15,25 +15,28 @@
 
     <main>
         <div id="calc">
-            <div id="calcDisplay" class="calcButton"></div>
-            <button id="calcClear" class="calcButton">Clear</button>
-            <button id="calcBack" class="calcButton">Backspace</button>
-            <button id="calcMinus" class="calcButton">-</button>
-            <button id="calcNine" class="calcButton">9</button>
-            <button id="calcEight" class="calcButton">8</button>
-            <button id="caclcSeven" class="calcButton">7</button>
-            <button id="calDivide" class="calcButton">&divide;</button>
-            <button id="calcSix" class="calcButton">6</button>
-            <button id="calcFive" class="calcButton">5</button>
-            <button id="calcFour" class="calcButton">4</button>
-            <button id="calcPlus" class="calcButton">+</button>
-            <button id="calcThree" class="calcButton">3</button>
-            <button id="calcTwo" class="calcButton">2</button>
-            <button id="calcOne" class="calcButton">1</button>
-            <button id="calcTimes" class="calcButton">&times;</button>
-            <button id="calcZero" class="calcButton">0</button>
-            <button id="calcPeriod" class="calcButton">.</button>
-            <button id="calcEquals" class="calcButton">=</button>
+            <div id="calcDisplay">
+                <div id="topDigit"></div>
+                <div id="bottomDigit"></div>
+            </div>
+            <button id="calcClear" class="calcButtonUtil" value="clr">Clear</button>
+            <button id="calcBack" class="calcButtonUtil" value="bksp">Backspace</button>
+            <button id="calcMinus" class="calcButtonFunc" value="-">-</button>
+            <button id="calcNine" class="calcButton" value="9">9</button>
+            <button id="calcEight" class="calcButton" value="8">8</button>
+            <button id="caclcSeven" class="calcButton" value="7">7</button>
+            <button id="calDivide" class="calcButtonFunc" value="/">&divide;</button>
+            <button id="calcSix" class="calcButton" value="6">6</button>
+            <button id="calcFive" class="calcButton" value="5">5</button>
+            <button id="calcFour" class="calcButton" value="4">4</button>
+            <button id="calcPlus" class="calcButtonFunc" value="+">+</button>
+            <button id="calcThree" class="calcButton" value="3">3</button>
+            <button id="calcTwo" class="calcButton" value="2">2</button>
+            <button id="calcOne" class="calcButton" value="1">1</button>
+            <button id="calcTimes" class="calcButtonFunc" value="*">&times;</button>
+            <button id="calcZero" class="calcButton" value="0">0</button>
+            <button id="calcPeriod" class="calcButton" value=".">.</button>
+            <button id="calcEquals" class="calcButton" value="=">=</button>
         </div>
     </main>
 
