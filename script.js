@@ -2,6 +2,9 @@ topDisplay = document.querySelector("#topDigit");
 bottomDisplay = document.querySelector('#bottomDigit');
 intButtons = document.querySelectorAll(".calcButton");
 funcButtons = document.querySelectorAll(".calcButtonFunc");
+enterButton = document.querySelector('#calcEquals');
+backspaceButton = document.querySelector('#calcBack');
+clearButton = document.querySelector('#calcClear')
 
 let lastDigit = [];
 let currentDigit = [];
@@ -11,32 +14,46 @@ let operationNeccesary = false;
 
 function addition (lastArray, currentArray) {
     let returnArray = [];
-    returnArray.push(Number(lastArray.join('')) + Number(currentArray.join('')));
+    let n = Number(lastArray.join('')) + Number(currentArray.join(''));
+    if (n - Math.floor(n) !== 0) {
+        returnArray.push(n.toFixed(2));
+    } else {
+        returnArray.push(n);
+    }
     return returnArray;
 };
 
 function subtraction (lastArray, currentArray) {
     let returnArray = [];
-    returnArray.push(Number(lastArray.join('')) - Number(currentArray.join('')));
+    let n = Number(lastArray.join('')) - Number(currentArray.join(''));
+    if (n - Math.floor(n) !== 0) {
+        returnArray.push(n.toFixed(2));
+    } else {
+        returnArray.push(n);
+    }
     return returnArray;
 };
 
 function multiplication (lastArray, currentArray) {
     let returnArray = [];
-    returnArray.push(Number(lastArray.join('')) * Number(currentArray.join('')));
+    let n = Number(lastArray.join('')) * Number(currentArray.join(''));
+    if (n - Math.floor(n) !== 0) {
+        returnArray.push(n.toFixed(2));
+    } else {
+        returnArray.push(n);
+    }
     return returnArray;
 };
 
 function division (lastArray, currentArray) {
-    if (Number(currentArray.join('')) == 0) {
-        let returnArray = [];
-        returnArray.push('0... -_-');
-        return returnArray;
+    let returnArray = [];
+    let n = Number(lastArray.join('')) / Number(currentArray.join(''));
+    if (n - Math.floor(n) !== 0) {
+        returnArray.push(n.toFixed(2));
     } else {
-        let returnArray = [];
-        returnArray.push(Number(lastArray.join('')) / Number(currentArray.join('')));
-        return returnArray;
+        returnArray.push(n);
     }
+    return returnArray;
 };
 
 function evaluate (lastArray, currentArray) {
@@ -84,3 +101,25 @@ funcButtons.forEach((button) => {
         }
     })
 })
+
+enterButton.addEventListener('click', () => {
+    updateTopDisplay(`${lastDigit.join('')} ${operation} ${currentDigit.join('')} =`)
+    let output = evaluate(lastDigit, currentDigit);
+    lastDigit = output;
+    currentDigit = [];
+    updateBottomDisplay(output.join(''))
+});
+
+backspaceButton.addEventListener('click', () => {
+    currentDigit.pop();
+    updateBottomDisplay(currentDigit.join(''));
+});
+
+clearButton.addEventListener('click', () => {
+    lastDigit = [];
+    currentDigit = [];
+    operation = '';
+    operationNeccesary = false;
+    updateTopDisplay(lastDigit.join(''));
+    updateBottomDisplay(currentDigit.join(''));
+});
