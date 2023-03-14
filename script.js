@@ -84,30 +84,46 @@ intButtons.forEach((button) => {
 
 funcButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (operationNeccesary == false) {
-            operation = button.value;
-            operationNeccesary = true;
-            lastDigit = currentDigit;
-            currentDigit = [];
-            updateTopDisplay(`${lastDigit.join('')} ${operation}`);
-            updateBottomDisplay(currentDigit.join(''));
-        } else if (operationNeccesary == true) {
-            let output = evaluate(lastDigit, currentDigit);
-            lastDigit = output;
-            currentDigit = [];
-            operation = button.value;
-            updateTopDisplay(`${lastDigit.join('')} ${operation}`);
-            updateBottomDisplay(currentDigit.join(''))
+        if (currentDigit.join('') == '') {
+            alert("Please input a number before attempting to run an operation.")
+        } else {
+            if (operation == '/' && Number(currentDigit.join('')) == 0) {
+                alert('Division by zero is currently unsupported. Functionality to be introduced by the devloper in 2099.')
+            } else {
+                if (operationNeccesary == false) {
+                    operation = button.value;
+                    operationNeccesary = true;
+                    lastDigit = currentDigit;
+                    currentDigit = [];
+                    updateTopDisplay(`${lastDigit.join('')} ${operation}`);
+                    updateBottomDisplay(currentDigit.join(''));
+                } else if (operationNeccesary == true) {
+                    let output = evaluate(lastDigit, currentDigit);
+                    lastDigit = output;
+                    currentDigit = [];
+                    operation = button.value;
+                    updateTopDisplay(`${lastDigit.join('')} ${operation}`);
+                    updateBottomDisplay(currentDigit.join(''))
+                }
+            }
         }
     })
-})
+});
 
 enterButton.addEventListener('click', () => {
-    updateTopDisplay(`${lastDigit.join('')} ${operation} ${currentDigit.join('')} =`)
-    let output = evaluate(lastDigit, currentDigit);
-    lastDigit = output;
-    currentDigit = [];
-    updateBottomDisplay(output.join(''))
+    if (currentDigit.join('') == '') {
+            alert("Please input a number before attempting to run an operation.")
+        } else {
+            if (operation == '/' && Number(currentDigit.join('')) == 0) {
+                alert('Division by zero is currently unsupported. Functionality to be introduced by the devloper in 2099.')
+            } else {
+                updateTopDisplay(`${lastDigit.join('')} ${operation} ${currentDigit.join('')} =`)
+                let output = evaluate(lastDigit, currentDigit);
+                lastDigit = output;
+                currentDigit = [0];
+                updateBottomDisplay(output.join(''))
+            }
+        }
 });
 
 backspaceButton.addEventListener('click', () => {
